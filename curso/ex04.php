@@ -15,8 +15,7 @@
         
 //-----------------------DELETE e update-------------------------
 
-$cmd = $pdo->prepare("DELETE FROM pessoa WHERE id = :îd)");
-$id = 3;
-$cmd->bindValue(":id", $id);
-$cmd->execute();
- ?>
+
+$res = $pdo->query("DELETE FROM pessoa WHERE id = '3'");
+
+?>
