@@ -1,6 +1,6 @@
 <?php
 
-$cmd = $pdo->prepare("SELECT * FROM pessoa WHERE id = :id");
+$cmd = $pdo("SELECT * FROM pessoa");
 $cmd->bindValue(":id",4);
 $cmd->execute();
 $res = $cmd->fetch(); 

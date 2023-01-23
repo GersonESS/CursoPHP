@@ -1,3 +1,7 @@
+<?php
+require_once 'class-pessoa.php';
+$p = new Pessoa("crudpdo","localhost","root","gabibi89");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,13 +22,16 @@
             <label for="email">Email</label>
             <input type="text" name="email" id="email">
             <input type="submit" value="Cadastrar">
-        </form>
-        
+        </form>       
     </section>
     <section id="direita">
+    <?php
+        $dados = $p->buscarDados();
+        var_dump($dados)
+    ?>
      <table>
-         <tr>
-             <td>Nome</td>
+         <tr id="titulo">
+            <td>Nome</td>
              <td>Telefone</td>
              <td colspam="2">Email</td>
          </tr>

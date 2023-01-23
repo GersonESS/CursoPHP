@@ -32,7 +32,7 @@ Class Pessoa
     {
         // antes de cadastrar ver se tem o email cadastrado
         $cmd = $this->pdo->prepare("SELECT id FROM pessoa WHERE email = :e");
-        $cmd->bindValue(":e" ,$email);
+        $cmd->bindValue(":e",$email);
         $cmd->execute();
         if($cmd->rowCount() > 0)//email existe
             {
@@ -41,9 +41,9 @@ Class Pessoa
             else
              {
                 $cmd = $this->pdo->prepare("INSERT INTO pessoa (nome, telefone, email) VALUES (:n, :t, :e)");
-                $cmd->bindValue(":n" ,$nome);
-                $cmd->bindValue(":t" ,$telefone);
-                $cmd->bindValue(":e" ,$email);
+                $cmd->bindValue(":n",$nome);
+                $cmd->bindValue(":t",$telefone);
+                $cmd->bindValue(":e",$email);
                 $cmd->execute();
                 return true;
              } 
