@@ -13,23 +13,31 @@ $p = new Pessoa("crudpdo","localhost","root","gabibi89");
 </head>
 <body>
 <?php 
-        if(isset($_POST['nome']))
-        {     
-            $nome     = addslashes($_POST['nome']);         
-            $email    = addslashes($_POST['email']);
-            $telefone = addslashes($_POST['telefone']);
-            if (!empty($nome) && !empty($telefone) && !empty($email) )
-            {
-               if(!$p->cadastrarPessoa($nome, $telefone, $email))
-               {
-                echo"email ja esta cadstrado";
-               }
-            }
-            else
-            {
-                echo "Preencha todos os campos";
-            }
+    if(isset($_POST['nome']))
+    {     
+        $nome     = addslashes($_POST['nome']);         
+        $email    = addslashes($_POST['email']);
+        $telefone = addslashes($_POST['telefone']);
+
+            print_r($nome);
+            print_r($telefone);
+            print_r($email);
+
+        if (!empty($nome) && !empty($telefone) && !empty($email) )
+        {
+           if(!$p->cadastrarPessoa($nome, $telefone, $email))
+           {
+            echo"email ja esta cadstrado";
+           }
         }
+        else
+        {
+            print_r($nome);
+            print_r($telefone);
+            print_r($email);
+            echo "Preencha todos os campos";
+        }
+    }
 
 
 ?>
