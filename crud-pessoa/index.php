@@ -34,7 +34,7 @@ $p = new Pessoa("crudpdo","localhost","root","gabibi89");
 
 ?>
     <section id="esquerda">
-        <form method="POST" action="">
+        <form method="POST">
             <h2>Cadastrar Pessoa 2</h2>
             <label for="nome">Nome</label>
             <input type="text" name="nome" id="nome">
