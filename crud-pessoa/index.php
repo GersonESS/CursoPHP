@@ -13,8 +13,14 @@ $p = new Pessoa("crudpdo","localhost","root","gabibi89");
 </head>
 <body>
 <?php 
-    if(isset($_POST['nome']))
+   // if(isset($_POST['nome']))
+    if(isset($_POST['email']))
     {     
+        print_r($_POST['nome']);
+        print_r($_POST['email']);
+        print_r($_POST['telefone']);
+
+
         $nome     = addslashes($_POST['nome']);         
         $email    = addslashes($_POST['email']);
         $telefone = addslashes($_POST['telefone']);
