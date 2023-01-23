@@ -53,7 +53,7 @@ $p = new Pessoa("crudpdo","localhost","root","gabibi89");
             <label for="nome">Nome</label>
             <input type="text" name="nome" id="nome">
             <label for="telefone">Telefone</label>
-            <input type="text" nane="telefone" id="telefone">
+            <input type="tel" nane="telefone" id="telefone">
             <label for="email">Email</label>
             <input type="text" name="email" id="email">
             <input type="submit" value="Cadastrar">
