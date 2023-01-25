@@ -17,9 +17,9 @@
 
 
 $res = $pdo->prepare("INSERT INTO pessoa (nome, telefone, email) VALUES (:n, :t, :e)");
-$res->bindValue(":n" ,"Miriam-2 dos santos");
+$res->bindValue(":n" ,"Pedro dos santos");
 $res->bindValue(":t" ,"3199553374=2");
-$res->bindValue(":e" ,"Mir@dmail.com-2");
+$res->bindValue(":e" ,"santos@dmail.com-2");
 $res->execute();
 
 
