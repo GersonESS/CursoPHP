@@ -52,8 +52,12 @@ $p = new Pessoa("crudpdo","localhost","root","gabibi89");
             <h2>Cadastrar Pessoa 2</h2>
             <label for="nome">Nome</label>
             <input type="text" name="nome" id="nome">
-            <label for="telefone">Telefone</label>
-            <input type="tel" nane="telefone" id="telefone">
+            <!-- <label for="telefone">Telefone</label>
+            <input type="tel" nane="telefone" id="telefone"> -->
+
+            <label for="telefone">Nome</label>
+            <input type="text" name="telefone" id="telefone">
+            
             <label for="email">Email</label>
             <input type="text" name="email" id="email">
             <input type="submit" value="Cadastrar">

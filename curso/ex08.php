@@ -1,6 +1,10 @@
 <?php
-require_once 'class-pessoa.php';
-$p = new Pessoa("crudpdo","localhost","root","gabibi89");
+if(isset($_POST['submit']))
+{
+    print_r($_POST['nome']);
+    print_r($_POST['telefone']);
+    print_r($_POST['email']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,27 +12,25 @@ $p = new Pessoa("crudpdo","localhost","root","gabibi89");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../crud-pessoa/estilo.css">
+    <link rel="stylesheet" href="estilo.css">
     <title>Document</title>
 </head>
 <body>
     <section id="esquerda">
-        <form action="">
+        <form action="ex08.php" method="POST">
             <h2>Cadastrar Pessoa</h2>
             <label for="nome">Nome</label>
             <input type="text" name="nome" id="nome">
             <label for="telefone">Telefone</label>
-            <input type="text" nane="telefone" id="telefone">
+            <input type="text" name="telefone" id="telefone">
             <label for="email">Email</label>
             <input type="text" name="email" id="email">
-            <input type="submit" value="Cadastrar">
+            <!-- <input type="submit" value="submit" id="submit"> -->
+            <input type="submit" name="submit" id="submit">
         </form>       
     </section>
     <section id="direita">
-    <?php
-        $dados = $p->buscarDados();
-        var_dump($dados)
-    ?>
+   
      <table>
          <tr id="titulo">
             <td>Nome</td>
