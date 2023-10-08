@@ -38,7 +38,7 @@ Class Pessoa
             {
                 return false;
             }
-            else
+            else // nao foi encontrado email
              {
                 $cmd = $this->pdo->prepare("INSERT INTO pessoa (nome, telefone, email) VALUES (:n, :t, :e)");
                 $cmd->bindValue(":n",$nome);

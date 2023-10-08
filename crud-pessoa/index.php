@@ -1,6 +1,6 @@
 <?php
 require_once 'classe-pessoa.php';
-$p = new Pessoa("crudpdo","localhost","root","gabibi89");
+$p = new Pessoa("crudpdo","localhost","root","");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,8 +13,8 @@ $p = new Pessoa("crudpdo","localhost","root","gabibi89");
 </head>
 <body>
 <?php 
-   // if(isset($_POST['nome']))
-    if(isset($_POST['email']))
+    if(isset($_POST['nome']))
+    //if(isset($_POST['email']))
     {     
         print_r($_POST['nome']);
         print_r($_POST['email']);
@@ -47,20 +47,34 @@ $p = new Pessoa("crudpdo","localhost","root","gabibi89");
 
 
 ?>
+<?php
+
+if(isset($_GET['id_up']))
+{
+    $id_update = addslashes($_GET['id_up']);
+    $res = $p->buscarDadosPessoa($id_update);
+    
+}
+
+?>
+
     <section id="esquerda">
         <form method="POST">
             <h2>Cadastrar Pessoa 2</h2>
             <label for="nome">Nome</label>
-            <input type="text" name="nome" id="nome">
-            <!-- <label for="telefone">Telefone</label>
-            <input type="tel" nane="telefone" id="telefone"> -->
+            <input type="text" name="nome" id="nome"
+            value="<?php  if(isset($res)){echo $res['nome'];}?>"
+        
 
-            <label for="telefone">Nome</label>
-            <input type="text" name="telefone" id="telefone">
+            <label for="telefone">Telefone</label>
+            <input type="text" name="telefone" id="telefone"
+            value="<?php  if(isset($res)){echo $res['telefone'];}?>"
             
             <label for="email">Email</label>
-            <input type="text" name="email" id="email">
-            <input type="submit" value="Cadastrar">
+            <input type="email" name="email" id="email"
+            value="<?php  if(isset($res)){echo $res['email'];}?>">
+            <input type="submit" 
+            value="<?php if(isset($res)){echo "Atualizar";}else{ echo "Cadastrar";} ?>">
         </form>       
     </section>
     <section id="direita">
@@ -72,6 +86,9 @@ $p = new Pessoa("crudpdo","localhost","root","gabibi89");
             </tr>
     <?php
         $dados = $p->buscarDados();
+        //echo "<pre>";
+       // var_dump($dados);
+        //echo "</pre>";
         if(count($dados) > 0)  //tem pessoas cadastradas
         {
             for ($i=0; $i < count($dados); $i++)
@@ -83,8 +100,14 @@ $p = new Pessoa("crudpdo","localhost","root","gabibi89");
                         echo "<td>".$v."</td>";
                     }
                 }
-                ?><td><a href="">Editar</a><a href="">Excluir</a></td><?php
-                echo "</tr>";
+                ?>
+                <td>
+                    <?php echo $dados[$i]['id'];?>
+                    <a href="index.php?id_up=<?php echo $dados[$i]['id'];?>">Editar</a>
+                    <a href="index.php?id=<?php echo $dados[$i]['id'];?>">Excluir</a>
+                    </td>
+                    <?php
+                     echo "</tr>";
             }
         }
         else// o banco esta vasio
@@ -96,3 +119,11 @@ $p = new Pessoa("crudpdo","localhost","root","gabibi89");
     </section> 
 </body>
 </html>
+<?php
+if(isset($_GET['id']))
+{
+    $id_pessoa = addslashes($_GET['id']);
+    $p->excluirPessoa($id_pessoa);
+    header("location: index.php");
+}
+?>

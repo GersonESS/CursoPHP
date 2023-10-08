@@ -2,7 +2,7 @@
 // ------------------------CONEXAO-----------------------------------
     $dbHost = 'Localhost';
     $dbUsername = 'root';
-    $dbPassword = 'gabibi89'; 
+    $dbPassword = ''; 
     $dbname = 'CRUDPDO';
 
     $pdo = new mysqli($dbHost,$dbUsername,$dbPassword,$dbname);
