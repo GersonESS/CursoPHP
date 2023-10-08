@@ -63,13 +63,10 @@ if(isset($_GET['id_up']))
             <h2>Cadastrar Pessoa 2</h2>
             <label for="nome">Nome</label>
             <input type="text" name="nome" id="nome"
-            value="<?php  if(isset($res)){echo $res['nome'];}?>"
-        
-
+            value="<?php  if(isset($res)){echo $res['nome'];}?>">
             <label for="telefone">Telefone</label>
             <input type="text" name="telefone" id="telefone"
-            value="<?php  if(isset($res)){echo $res['telefone'];}?>"
-            
+            value="<?php  if(isset($res)){echo $res['telefone'];}?>"> 
             <label for="email">Email</label>
             <input type="email" name="email" id="email"
             value="<?php  if(isset($res)){echo $res['email'];}?>">
