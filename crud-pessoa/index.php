@@ -1,7 +1,6 @@
 <?php
 require_once 'classe-pessoa.php';
-$p = new Pessoa("crudpdo","localhost","root","");
-?>
+$p = new Pessoa("crudpdo","localhost","root",""); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,34 +13,85 @@ $p = new Pessoa("crudpdo","localhost","root","");
 <body>
 <?php 
     if(isset($_POST['nome']))
-    //if(isset($_POST['email']))
+    // Clicou no botao cadastrar ou editar
     {     
-        print_r($_POST['nome']);
-        print_r($_POST['email']);
-        print_r($_POST['telefone']);
-
-
+        // editar
+        if(isset($_GET['id_up']) && !empty($_GET['id_up']))
+        {
+            $id_upd   = addslashes($_GET['id_up']);
+            $nome     = addslashes($_POST['nome']);         
+            $email    = addslashes($_POST['email']);
+            $telefone = addslashes($_POST['telefone']);
+            if (!empty($nome) && !empty($telefone) && !empty($email) )
+            {
+             //------------Editar  
+            $p->atualizarDados($id_upd, $nome, $telefone, $email);
+            header("location: index.php");
+            }
+            else
+            {
+                ?>
+                <div class="aviso">
+                    <img src="aviso.png">
+                    <h4>Preencha todos os campos Primeiro</h4>
+                </div>
+                 <?php  
+            }
+        } 
+        //------------Cadastra
+        else 
+        {
+            $nome     = addslashes($_POST['nome']);         
+            $email    = addslashes($_POST['email']);
+            $telefone = addslashes($_POST['telefone']);
+            if (!empty($nome) && !empty($telefone) && !empty($email) )
+            {
+             //------------Cadastra   
+            if(!$p->cadastrarPessoa($nome, $telefone, $email))
+               {
+                ?>
+                <div class="aviso">
+                    <img src="aviso.png">
+                    <h4>Email ja esta cadastrado</h4>
+                </div>
+                <?php  
+               }
+            }
+            else
+            {
+                ?>
+                <div class="aviso">
+                    <img src="aviso.png">
+                    <h4>Preencha todos os campos Segundo</h4>
+                </div>
+                <?php  
+            }
+        }
+    
         $nome     = addslashes($_POST['nome']);         
         $email    = addslashes($_POST['email']);
         $telefone = addslashes($_POST['telefone']);
-
-            print_r($nome);
-            print_r($telefone);
-            print_r($email);
-
         if (!empty($nome) && !empty($telefone) && !empty($email) )
         {
            if(!$p->cadastrarPessoa($nome, $telefone, $email))
            {
-            echo"email ja esta cadstrado";
+        ?>
+            <div class="aviso">
+            <img src="aviso.png">
+            <h4>email ja esta cadstrado</h4>
+            </div>
+        <?php
            }
         }
         else
         {
-            print_r($nome);
-            print_r($telefone);
-            print_r($email);
-            echo "Preencha todos os campos";
+            ?>
+            <div class="aviso">
+                <img src="aviso.png">
+                <h4>Preencha todos os campos</h4>
+            </div>
+            <?php  
+
         }
     }
 
@@ -83,9 +133,7 @@ if(isset($_GET['id_up']))
             </tr>
     <?php
         $dados = $p->buscarDados();
-        //echo "<pre>";
-       // var_dump($dados);
-        //echo "</pre>";
+        
         if(count($dados) > 0)  //tem pessoas cadastradas
         {
             for ($i=0; $i < count($dados); $i++)
@@ -107,12 +155,16 @@ if(isset($_GET['id_up']))
                      echo "</tr>";
             }
         }
-        else// o banco esta vasio
-        {
-               echo " ainda não há pessoas cadastradas";
-        }
+    else// o banco esta vasio
+    {
     ?>
-     </table>
+    </table>
+        <div class="aviso">
+            <h4>Ainda não há pessoas cadastradas</h4>
+        </div>
+    <?php 
+    }
+    ?>
     </section> 
 </body>
 </html>

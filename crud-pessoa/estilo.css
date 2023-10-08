@@ -61,6 +61,16 @@ a{
 }
 .aviso
 {
-    background-color: red;
-    color: blueviolet;
+    width: 90%;
+    height: 50px;
+    margin: 30px auto 0px auto;
+}
+img{
+    width: 50px;
+    display: block;
+    float: left;
+}
+h4{
+    float: left;
+    line-height: 50px;
 }
