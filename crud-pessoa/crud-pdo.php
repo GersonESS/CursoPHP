@@ -14,7 +14,7 @@
         echo "Conexao realizada com sucesso";
     }
     
-    $testConnection = new Connect();
+
 
  // ------------------------insert-----------------------------------
  // ----PHP PDO 2/10 (INSERT)
