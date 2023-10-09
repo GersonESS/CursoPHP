@@ -17,15 +17,15 @@
 
 
 $res = $pdo->prepare("INSERT INTO pessoa (nome, telefone, email) VALUES (:n, :t, :e)");
-$res->bindValue(":n" ,"Pedro dos santos");
-$res->bindValue(":t" ,"3199553374=2");
-$res->bindValue(":e" ,"santos@dmail.com-2");
+$res->bindValue(":n" ,"Pedro Aniversariante");
+$res->bindValue(":t" ,"31988334336");
+$res->bindValue(":e" ,"pe@dmail.com");
 $res->execute();
 
 $res = $pdo->prepare("INSERT INTO pessoa (nome, telefone, email) VALUES (:n, :t, :e)");
-$res->bindValue(":n" ,"Miriam-2 dos santos");
-$res->bindValue(":t" ,"3199553374=2");
-$res->bindValue(":e" ,"Mir@dmail.com-2");
+$res->bindValue(":n" ,"Gabibi dos santos");
+$res->bindValue(":t" ,"31986625634");
+$res->bindValue(":e" ,"bi@gmail.com");
 $res->execute();
 
 
