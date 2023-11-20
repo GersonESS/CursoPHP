@@ -1,7 +1,7 @@
 <?php
  try 
  {
-     $pdo = new PDO("mysql:dbname=CRUDPDO;host=localhost","root","gabibi89");
+     $pdo = new PDO("mysql:dbname=CRUDPDO;host=localhost","root","");
  }  
  catch(PDOException $e) {
     echo "Erro Com banco de dados: ".$e->getMessage();
